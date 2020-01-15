@@ -96,7 +96,8 @@ module PublicActivity
     # all types of models. This can be used for example in the case of sending
     # private notifications for only a single user.
     # @return (see #activity_owner)
-    attr_accessor :act## t = nil
+    ## attr_accessor :activity_recipient
+    ## @activity_recipient = nil
     # Set or get custom i18n key passed to {Activity}, later used in {Renderable#text}
     #
     # == Usage:
@@ -294,8 +295,8 @@ module PublicActivity
         {
           key:        key,
           owner:      prepare_relation(:owner,     raw_options),
-          recipient:  prepare_relation(:recipient, raw_options),
-          ## parameters: prepare_parameters(raw_options),
+          ## recipient:  prepare_relation(:recipient, raw_options),
+          parameters: prepare_parameters(raw_options),
         }
       )
     end
