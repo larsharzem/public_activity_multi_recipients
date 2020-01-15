@@ -25,7 +25,7 @@ module PublicActivity
 
     included do
       include Trackable
-      class_attribute :activity_owner_global, :activity_recipient_global,
+      class_attribute :activity_owner_global, ## :activity_recipient_global,
                       :activity_params_global, :activity_hooks, :activity_custom_fields_global
       set_public_activity_class_defaults
     end
@@ -96,8 +96,7 @@ module PublicActivity
     # all types of models. This can be used for example in the case of sending
     # private notifications for only a single user.
     # @return (see #activity_owner)
-    attr_accessor :activity_recipient
-    @activity_recipient = nil
+    attr_accessor :act## t = nil
     # Set or get custom i18n key passed to {Activity}, later used in {Renderable#text}
     #
     # == Usage:
@@ -130,7 +129,7 @@ module PublicActivity
       def set_public_activity_class_defaults
         self.activity_owner_global             = nil
         self.activity_recipient_global         = nil
-        self.activity_params_global            = {}
+        ## self.activity_params_global            = {}
         self.activity_hooks                    = {}
         self.activity_custom_fields_global     = {}
       end
@@ -296,7 +295,7 @@ module PublicActivity
           key:        key,
           owner:      prepare_relation(:owner,     raw_options),
           recipient:  prepare_relation(:recipient, raw_options),
-          parameters: prepare_parameters(raw_options),
+          ## parameters: prepare_parameters(raw_options),
         }
       )
     end
@@ -356,7 +355,7 @@ module PublicActivity
       @activity_params = {}
       @activity_key = nil
       @activity_owner = nil
-      @activity_recipient = nil
+      ## @activity_recipient = nil
       @activity_custom_fields = {}
     end
   end

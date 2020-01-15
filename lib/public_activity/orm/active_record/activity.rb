@@ -27,20 +27,20 @@ module PublicActivity
         # Define polymorphic association to the parent
         belongs_to :trackable, :polymorphic => true
 
-        case ::ActiveRecord::VERSION::MAJOR
-        when 3..4
-          # Define ownership to a resource responsible for this activity
-          belongs_to :owner, :polymorphic => true
-          # Define ownership to a resource targeted by this activity
-          belongs_to :recipient, :polymorphic => true
-        when 5..6
-          with_options(:required => false) do
-            # Define ownership to a resource responsible for this activity
-            belongs_to :owner, :polymorphic => true
-            # Define ownership to a resource targeted by this activity
-            belongs_to :recipient, :polymorphic => true
-          end
-        end
+        ## case ::ActiveRecord::VERSION::MAJOR
+        ## when 3..4
+        ##   # Define ownership to a resource responsible for this activity
+        ##   belongs_to :owner, :polymorphic => true
+        ##   # Define ownership to a resource targeted by this activity
+        ##   belongs_to :recipient, :polymorphic => true
+        ## when 5..6
+        ##   with_options(:required => false) do
+        ##     # Define ownership to a resource responsible for this activity
+        ##     belongs_to :owner, :polymorphic => true
+        ##     # Define ownership to a resource targeted by this activity
+        ##     belongs_to :recipient, :polymorphic => true
+        ##   end
+        ## end
 
         # Serialize parameters Hash
         begin
@@ -60,6 +60,26 @@ module PublicActivity
         if ::ActiveRecord::VERSION::MAJOR < 4 || defined?(ProtectedAttributes)
           attr_accessible :key, :owner, :parameters, :recipient, :trackable
         end
+
+        ## getters ##
+      
+          def date
+            return self.created_at.strftime('%d %b %Y')
+          end
+      
+          def date_per_three_hours
+            interval = (self.created_at.strftime('%H').to_f * 60.minutes + self.created_at.strftime('%M').to_i * 60.seconds) / 3.hours
+            return self.created_at.strftime('%d %b %Y') + " #{interval.floor * 3}:00"
+          end
+      
+          def date_hour
+            interval = (self.created_at.strftime('%M').to_i * 60.seconds) / 10.minutes
+            return self.created_at.strftime('%d %b %Y %H') + ":#{interval.floor * 10}"
+          end
+      
+          def date_hour_minute
+            return self.created_at.strftime('%d %b %Y %H:%M')
+          end
       end
     end
   end

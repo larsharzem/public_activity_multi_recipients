@@ -22,9 +22,9 @@ module PublicActivity
         # Define polymorphic association to the parent
         belongs_to :trackable,  opts
         # Define ownership to a resource responsible for this activity
-        belongs_to :owner,      opts
+        ## belongs_to :owner,      opts
         # Define ownership to a resource targeted by this activity
-        belongs_to :recipient,  opts
+        ## belongs_to :recipient,  opts
 
         field :key,         type: String
         field :parameters,  type: Hash

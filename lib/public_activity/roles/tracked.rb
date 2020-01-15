@@ -34,7 +34,7 @@ module PublicActivity
       self.activity_key           = rest.delete(:key) if rest[:key]
       self.activity_owner         = rest.delete(:owner) if rest[:owner]
       self.activity_params        = rest.delete(:params) if rest[:params]
-      self.activity_recipient     = rest.delete(:recipient) if rest[:recipient]
+      ## self.activity_recipient     = rest.delete(:recipient) if rest[:recipient]
       self.activity_custom_fields = rest if rest.count > 0
       nil
     end
@@ -169,11 +169,13 @@ module PublicActivity
       end
 
       def available_options
-        [:skip_defaults, :only, :except, :on, :owner, :recipient, :params].freeze
+        ## [:skip_defaults, :only, :except, :on, :owner, :recipient, :params].freeze
+        [:skip_defaults, :only, :except, :on, :owner, :params].freeze
       end
 
       def assign_globals(options)
-        [:owner, :recipient, :params].each do |key|
+        ## [:owner, :recipient, :params].each do |key|
+        [:owner, :params].each do |key|
           if options[key]
             self.send("activity_#{key}_global=".to_sym, options.delete(key))
           end

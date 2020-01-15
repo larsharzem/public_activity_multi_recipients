@@ -22,13 +22,13 @@ module PublicActivity
         #   User.first.activities
         #
         def activist
-          has_many :activities_as_owner,
-            :class_name => "::PublicActivity::Activity",
-            :inverse_of => :owner
+          ## has_many :activities_as_owner,
+          ##   :class_name => "::PublicActivity::Activity",
+          ##   :inverse_of => :owner
 
-          has_many :activities_as_recipient,
-            :class_name => "::PublicActivity::Activity",
-            :inverse_of => :recipient
+          ## has_many :activities_as_recipient,
+          ##   :class_name => "::PublicActivity::Activity",
+          ##   :inverse_of => :recipient
         end
       end
     end

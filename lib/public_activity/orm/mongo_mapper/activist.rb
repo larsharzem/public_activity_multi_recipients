@@ -23,12 +23,12 @@ module PublicActivity
         #   User.first.activities
         #
         def activist
-          many :activities_as_owner,
-            :class_name => "::PublicActivity::Activity",
-            :as => :owner
-          many :activities_as_recipient,
-            :class_name => "::PublicActivity::Activity",
-            :as => :recipient
+          ## many :activities_as_owner,
+          ##   :class_name => "::PublicActivity::Activity",
+          ##   :as => :owner
+          ## many :activities_as_recipient,
+          ##   :class_name => "::PublicActivity::Activity",
+          ##   :as => :recipient
         end
       end
     end
