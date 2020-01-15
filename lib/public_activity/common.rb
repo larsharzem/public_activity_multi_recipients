@@ -128,8 +128,8 @@ module PublicActivity
       # @api private
       def set_public_activity_class_defaults
         self.activity_owner_global             = nil
-        self.activity_recipient_global         = nil
-        ## self.activity_params_global            = {}
+        ## self.activity_recipient_global         = nil
+        self.activity_params_global            = {}
         self.activity_hooks                    = {}
         self.activity_custom_fields_global     = {}
       end
